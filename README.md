@@ -1,4 +1,4 @@
-# NAJMI E-Commerce
+# Architecture microservice
 
 Architecture and folder skeleton for a modular, independently deployable e-commerce platform. This repository contains documentation and empty structural placeholders only; it is not runnable.
 
