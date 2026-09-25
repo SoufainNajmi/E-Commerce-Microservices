@@ -1,0 +1,61 @@
+# Secrets et configuration locale
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Dépendances
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Builds et caches
+dist/
+build/
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+.turbo/
+*.tsbuildinfo
+.phpunit.cache/
+.phpunit.result.cache
+
+# Tests et couverture
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Journaux et fichiers temporaires
+*.log
+*.pid
+*.pid.lock
+*.tmp
+*.swp
+*.swo
+*~
+
+# Données locales des conteneurs et sauvegardes
+infrastructure/docker/volumes/
+infrastructure/redis/data/
+infrastructure/rabbitmq/data/
+databases/*/data/
+*.sql.gz
+*.dump
+
+# Éditeurs et système
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
