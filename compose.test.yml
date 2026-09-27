@@ -1,0 +1,14 @@
+# Use a separate project: docker compose -p najmi-auth-tests -f docker-compose.yml -f compose.test.yml ...
+services:
+  auth-service:
+    environment:
+      APP_ENV: testing
+      CACHE_STORE: array
+      AUTH_TEST_DATABASE: "true"
+      ADMIN_EMAIL: ""
+      ADMIN_PASSWORD: ""
+  nginx:
+    ports: !override []
+networks:
+  microservices-network:
+    name: najmi-auth-tests-network

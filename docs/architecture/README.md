@@ -2,6 +2,8 @@
 
 This document defines architectural boundaries and proposed communication contracts only. Event names are design labels, not implemented APIs or message schemas.
 
+Phase 2 implements Auth with the simpler Laravel layers requested for this phase. See [Auth Service](../auth-service.md) for the implemented runtime; diagrams below describe the broader planned system.
+
 ## Internal service architecture
 
 | Directory | Intended responsibility |

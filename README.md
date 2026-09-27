@@ -1,6 +1,6 @@
 # Architecture microservice
 
-Architecture and folder skeleton for a modular, independently deployable e-commerce platform. This repository contains documentation and empty structural placeholders only; it is not runnable.
+Architecture and folder skeleton for a modular, independently deployable e-commerce platform. Phase 2 implements the Auth Service; other services remain structural placeholders. See [Auth Service setup, API and tests](docs/auth-service.md).
 
 The current repository directory represents `NAJMI-E-COMMERCE/` in the logical structure below.
 
@@ -40,7 +40,7 @@ NAJMI-E-COMMERCE/
 └── README.md
 ```
 
-Every microservice has exactly the same internal architecture:
+The Phase 1 service placeholders use this internal architecture (Auth now also has the Laravel structure described in its documentation):
 
 ```text
 service/
@@ -57,7 +57,7 @@ service/
 └── .env.example
 ```
 
-Empty directories include `.gitkeep` solely to preserve the structure in version control. Dockerfiles, environment examples, and Compose are intentionally empty. No dependency manifests, runtime configuration, application code, database schemas, or migrations are supplied.
+Empty directories include `.gitkeep` solely to preserve the structure in version control. Other service Dockerfiles and environment examples remain empty. Auth now includes its own Laravel application, migrations, tests and Docker configuration.
 
 ## Architecture diagram
 
@@ -100,7 +100,7 @@ The PostgreSQL and Redis arrows above summarize access; exact ownership and allo
 
 | Component | Responsibility | Exclusive PostgreSQL database |
 | --- | --- | --- |
-| Auth | Credentials, identity, token issuance, refresh sessions, account access state | `auth-db` |
+| Auth | Credentials, identity, token issuance, refresh sessions, account access state | `auth_db` |
 | User | Customer profiles, addresses, contact preferences | `user-db` |
 | Product | Catalog, categories, descriptions, authoritative product prices | `product-db` |
 | Inventory | Stock levels, reservations, reservation expiry, stock commitment and release | `inventory-db` |
@@ -109,7 +109,7 @@ The PostgreSQL and Redis arrows above summarize access; exact ownership and allo
 | Payment | Payment attempts, provider references, payment status, refunds | `payment-db` |
 | Notification | Event-triggered email/SMS delivery using external providers | None; durable RabbitMQ queues hold pending work |
 
-Services alone access their own databases. Other services obtain data through REST or events, never shared tables, cross-database joins, or direct database credentials. `databases/` reserves infrastructure documentation locations; each service's `database/` reserves its future persistence artifacts. Both remain empty.
+Services alone access their own databases. Other services obtain data through REST or events, never shared tables, cross-database joins, or direct database credentials. `databases/` reserves infrastructure documentation locations; each service's `database/` reserves its future persistence artifacts. Auth owns its migrations in `services/auth-service/database/`; `databases/auth-db/` contains its PostgreSQL initialization script.
 
 ## Supporting components
 
